@@ -1,11 +1,13 @@
 .DS_Store
 *.swp
 .vscode/
+.sass-cache
 
 __pycache__/
 *.py[cod]
 
 env/
-.env
+# normally I'd ignore the dotenv file
+# .env
 
 caredash.db

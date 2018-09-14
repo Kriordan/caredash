@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CareDash</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,700" rel="stylesheet">
+
+  <link href="{{ url_for('static', filename='css/normalize.css') }}" rel="stylesheet"/>
+  <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet"/>
+</head>
+<body>
+  {% include '_header.html' %}
+
+  <div class="container">
+
+    <div class="Home-hero">
+      <img class="Home-heroImage" src="https://cdn.newsapi.com.au/image/v1/ce737d9491e4d05196bf1c2ae675a7ca" alt="carebears">
+
+      <section class="SignUp">
+        <h3 class="SignUp-title">Sign Up with CareDash to Edit your Provider Profile</h3>
+
+        <form class="SignUp-form" action="" method="post">
+          <label class="SignUp-label" for="firstname">First Name</label>
+          <input class="SignUp-input" type="text" name="firstname" id="firstname">
+
+          <label class="SignUp-label" for="lastname">Last Name</label>
+          <input class="SignUp-input" type="text" name="lastname" id="lastname">
+
+          <label class="SignUp-label" for="email">Email Address</label>
+          <input class="SignUp-input" type="email" name="email" id="email">
+
+          <label class="SignUp-label" for="password">Password</label>
+          <input class="SignUp-input" type="password" name="password" id="password">
+
+          <label class="SignUp-label" for="confirmpassword">Confirm Password</label>
+          <input class="SignUp-input" type="password" name="confirmpassword" id="confirmpassword">
+
+          <button class="SignUp-submit" type="submit">Sign Up</button>
+        </form>
+      </section>
+    </div>
+
+    <section class="Reasons">
+      <h3 class="Reasons-title">Reasons to Sign Up as a Provider on CareDash</h3>
+      <div class="Reasons-blocks">
+        <div class="Reasons-block">
+          <img src="https://fillmurray.com/300/200" alt="Bill Murray" class="Reasons-blockImage">
+          <h2 class="Reasons-blockTitle">Cascading Stylesheets</h2>
+          <p class="Reasons-blockDescription">"Twas brillig, and the slithy toves Did gyre and gimble in the wabe; All mimsy were the borogoves, And the mome raths outgrabe. “Beware the Jabberwock, my son! The jaws that bite, the claws that catch! Beware the Jubjub bird, and shun The frumious Bandersnatch!”</p>
+          <button class="Reasons-blockButton">Learn More</button>
+        </div>
+        <div class="Reasons-block">
+          <img src="https://placekitten.com/300/200" alt="Kittens" class="Reasons-blockImage">
+          <h2 class="Reasons-blockTitle">Hypertext Markup Lang</h2>
+          <p class="Reasons-blockDescription">He took his vorpal sword in hand: Long time the manxome foe he sought — So rested he by the Tumtum tree, And stood awhile in thought. And as in uffish thought he stood, The Jabberwock, with eyes of flame, Came whiffling through the tulgey wood, And burbled as it came!</p>
+          <button class="Reasons-blockButton">Learn More</button>
+        </div>
+        <div class="Reasons-block">
+          <img src="https://placem.at/things?w=300&h=200" alt="Some random thing as a placeholder" class="Reasons-blockImage">
+          <h2 class="Reasons-blockTitle">JavaScript</h2>
+          <p class="Reasons-blockDescription">One, two! One, two! And through and through The vorpal blade went snicker-snack! He left it dead, and with its head He went galumphing back. “And hast thou slain the Jabberwock? Come to my arms, my beamish boy! O frabjous day! Callooh! Callay!” He chortled in his joy.</p>
+          <button class="Reasons-blockButton">Learn More</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  {% include '_footer.html' %}
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

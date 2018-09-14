@@ -1,0 +1,25 @@
+@import 'Home';
+@import 'Header';
+@import 'Footer';
+
+// * {
+//   border: 1px solid black;
+// }
+
+/* Paul Irish's Border Box FTW
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.container {
+  margin: auto;
+  max-width: 1200px;
+}

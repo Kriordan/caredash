@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv, find_dotenv
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 
@@ -68,7 +68,7 @@ reviews_schema = ReviewSchema(many=True)
 # Routes
 @app.route('/')
 def home():
-    return 'So it goes'
+    return render_template('home.html')
 
 
 # API Endpoints
@@ -102,9 +102,15 @@ def get_doctor(id):
     return jsonify(result.data)
 
 
-# @app.route('/doctors/<int:id>', methods=['PUT'])
-# def update_doctor(id):
-#     doctor = Doctor.query.get(id)
+@app.route('/doctors/<int:id>', methods=['PUT'])
+def update_doctor(id):
+    doctor = Doctor.query.get(id)
+    doctor.name = request.json['doctor']['name']
+
+    db.session.commit()
+
+    result = doctor_schema.dump(doctor)
+    return jsonify(result.data)
 
 
 @app.route('/doctors/<int:id>', methods=['DELETE'])
@@ -118,13 +124,17 @@ def delete_doctor(id):
     return jsonify(result.data)
 
 
-# @app.route('/doctors/<int:id>/reviews', methods=['GET'])
-# def all_reviews(id):
-#     reviews = Reviews.query.filter_by()
+@app.route('/doctors/<int:doctor_id>/reviews', methods=['GET'])
+def all_reviews(doctor_id):
+    doctor = Doctor.query.get(doctor_id)
+
+    doctor_result = doctor_schema.dump(doctor)
+    reviews_result = reviews_schema.dump(doctor.reviews)
+    return jsonify({'doctor': doctor_result, 'reviews': reviews_result})
 
 
 @app.route('/doctors/<int:doctor_id>/reviews', methods=['POST'])
-def create_reviews(doctor_id):
+def create_review(doctor_id):
     description = request.json['review']['description']
     doctor = Doctor.query.get(doctor_id)
 
@@ -146,6 +156,17 @@ def create_reviews(doctor_id):
 @app.route('/doctors/<int:doctor_id>/reviews/<int:id>', methods=['GET'])
 def get_review(doctor_id, id):
     review = Review.query.get(id)
+
+    result = review_schema.dump(review)
+    return jsonify(result.data)
+
+
+@app.route('/doctors/<int:doctor_id>/reviews/<int:id>', methods=['PUT'])
+def update_review(doctor_id, id):
+    review = Review.query.get(id)
+    review.description = request.json['review']['description']
+
+    db.session.commit()
 
     result = review_schema.dump(review)
     return jsonify(result.data)

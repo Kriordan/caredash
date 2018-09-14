@@ -1,0 +1,101 @@
+.Home {
+  &-hero {
+    @media (min-width: 960px) {
+      display: flex;
+      max-height: 433px;
+    }
+  }
+  &-heroImage {
+    width: 100%;
+    @media (min-width: 960px) {
+      object-fit: cover;
+      width: 65%;
+    }
+  }
+}
+
+.SignUp {
+  margin-top: 50px;
+  @media (min-width: 960px) {
+    margin-top: 0;
+    width: 35%;
+  }
+
+  &-title {
+    margin: 0 auto 10px;
+    text-align: center;
+    width: 240px;
+  }
+
+  &-label,
+  &-input,
+  &-submit {
+    display: block;
+    margin: auto;
+    width: 300px;
+  }
+
+  &-input,
+  &-submit {
+    border-radius: 2px;
+    height: 40px;
+  }
+
+  &-label,
+  &-submit {
+    margin-top: 10px;
+  }
+
+  &-submit {
+    background-color: rgb(131, 166, 3);
+    border: 0;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.Reasons {
+  margin: 60px 0;
+
+  &-title,
+  &-blockTitle {
+    text-align: center;
+  }
+
+  &-title {
+    margin: 20px auto;
+    width: 240px;
+  }
+
+  &-blocks {
+    @media (min-width: 960px) {
+      display: flex;
+    }
+  }
+
+  &-block {
+    border-bottom: 1px solid #ddd;
+    margin: 0 auto 50px;
+    max-width: 300px;
+    padding-bottom: 50px;
+    @media (min-width: 960px) {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+  }
+
+  &-blockImage {
+    display: block;
+    margin: auto;
+  }
+
+  &-blockButton {
+    border: 1px solid #222;
+    border-radius: 2px;
+    cursor: pointer;
+    display: block;
+    height: 40px;
+    margin: 0 auto;
+    width: 150px;
+  }
+}
